@@ -40,6 +40,8 @@ flowchart TB
 
 The domains are independent editorial surfaces, not ten aliases for the same project. Cross-domain work belongs in a reproducible case study that names its source projects and evaluates the boundaries between them. The [methodology](docs/methodology.md) defines those gates. No list entry implies protocol conformance, certification, security approval or production readiness.
 
+The first [cross-domain composition case](docs/composition-case.md) traces a synthetic data-center incident through **all ten** specialties, from a formal safety invariant to human override, with a separate benchmark at each boundary.
+
 ## How a reference becomes recommended
 
 1. A contributor proposes a primary standard, benchmark or distinct implementation with an exact URL and a reason it belongs in one domain.
