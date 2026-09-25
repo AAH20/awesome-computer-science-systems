@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "catalog/domains.json"
 OUTPUT = ROOT / "lists"
 KINDS = {"standard", "method", "tool", "benchmark", "measurement"}
+STATES = {"candidate", "reviewed", "measured", "production_reference"}
 EXPECTED_IDS = (
     "algorithms-formal-methods",
     "distributed-systems",
@@ -27,7 +28,7 @@ EXPECTED_IDS = (
 
 
 def validate(data: dict) -> None:
-    if data.get("schema_version") != "cs-systems-atlas/v1":
+    if data.get("schema_version") != "cs-systems-atlas/v2":
         raise ValueError("unexpected catalog schema")
     domains = data.get("domains")
     if not isinstance(domains, list) or tuple(item.get("id") for item in domains) != EXPECTED_IDS:
@@ -44,8 +45,22 @@ def validate(data: dict) -> None:
         if not isinstance(refs, list) or len(refs) < 4:
             raise ValueError(f"{domain['id']}: needs at least four references")
         for ref in refs:
+            state = ref.get("status")
+            if state not in STATES:
+                raise ValueError(f"{domain['id']}: invalid reference status")
             if ref.get("kind") not in KINDS or not isinstance(ref.get("why"), str) or len(ref["why"]) < 25:
                 raise ValueError(f"{domain['id']}: incomplete reference annotation")
+            if state != "candidate":
+                required = ("reviewer", "reviewed_on", "suitable_workload", "limitations",
+                            "maintenance_evidence", "license_or_terms", "starting_point")
+                if any(not isinstance(ref.get(field), str) or not ref[field].strip() for field in required):
+                    raise ValueError(f"{domain['id']}: reviewed reference lacks evidence fields")
+                if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", ref["reviewed_on"]):
+                    raise ValueError(f"{domain['id']}: invalid review date")
+            if state in {"measured", "production_reference"} and not ref.get("benchmark_record"):
+                raise ValueError(f"{domain['id']}: measured reference lacks benchmark record")
+            if state == "production_reference" and not ref.get("deployment_permission"):
+                raise ValueError(f"{domain['id']}: production reference lacks citation permission")
             name, url = ref.get("name"), ref.get("url")
             if not isinstance(name, str) or not 2 <= len(name) <= 80 or not isinstance(url, str):
                 raise ValueError(f"{domain['id']}: invalid reference name or URL")
@@ -64,11 +79,24 @@ def render(domain: dict) -> str:
     lines = [f"# {domain['title']}", "", f"**Core question:** {domain['question']}", "",
              f"**Claim boundary:** {domain['boundary']}", "", "## Evaluation axes", ""]
     lines.extend(f"- {metric.capitalize()}" for metric in domain["benchmark_dimensions"])
-    lines += ["", "## Candidate references", "",
-              "These are starting references, pending human editorial review. Inclusion is not an endorsement or benchmark result.", "",
-              "| Reference | Kind | Why it belongs in this scope |", "| --- | --- | --- |"]
+    lines += ["", "## References", "",
+              "The initial entries are candidates pending human editorial review. Status distinguishes scope review from reproduced measurement; inclusion alone is not an endorsement.", "",
+              "| Reference | Kind | Status | Why it belongs in this scope |", "| --- | --- | --- | --- |"]
     for ref in domain["references"]:
-        lines.append(f"| [{ref['name']}]({ref['url']}) | {ref['kind']} | {ref['why']} |")
+        lines.append(f"| [{ref['name']}]({ref['url']}) | {ref['kind']} | {ref['status']} | {ref['why']} |")
+    reviewed = [ref for ref in domain["references"] if ref["status"] != "candidate"]
+    if reviewed:
+        lines += ["", "## Reviewed reference notes", ""]
+        for ref in reviewed:
+            lines += [f"### {ref['name']}", "", f"- Suitable workload: {ref['suitable_workload']}",
+                      f"- Limitations: {ref['limitations']}",
+                      f"- License or terms: {ref['license_or_terms']}",
+                      f"- Maintenance evidence: {ref['maintenance_evidence']}",
+                      f"- Starting point: {ref['starting_point']}",
+                      f"- Reviewed by {ref['reviewer']} on {ref['reviewed_on']}."]
+            if ref.get("benchmark_record"):
+                lines.append(f"- Benchmark record: {ref['benchmark_record']}")
+            lines.append("")
     lines += ["", "## Contribute", "",
               "Submit a reproducible benchmark, a primary standard, or a distinct implementation through the [contribution guide](../CONTRIBUTING.md). Explain the evaluation gap it fills. Maintainer-owned projects are disclosed separately in the [portfolio map](../docs/portfolio-map.md).", ""]
     return "\n".join(lines)

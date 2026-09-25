@@ -12,16 +12,16 @@
 - P99 latency
 - State divergence
 
-## Candidate references
+## References
 
-These are starting references, pending human editorial review. Inclusion is not an endorsement or benchmark result.
+The initial entries are candidates pending human editorial review. Status distinguishes scope review from reproduced measurement; inclusion alone is not an endorsement.
 
-| Reference | Kind | Why it belongs in this scope |
-| --- | --- | --- |
-| [etcd](https://github.com/etcd-io/etcd) | tool | Study a production-oriented distributed key-value control plane. |
-| [FoundationDB](https://github.com/apple/foundationdb) | tool | Examine transactional storage and fault-injection testing. |
-| [Jepsen](https://jepsen.io/) | benchmark | Investigate observable consistency under failures. |
-| [NATS](https://github.com/nats-io/nats-server) | tool | Compare messaging semantics and operational recovery. |
+| Reference | Kind | Status | Why it belongs in this scope |
+| --- | --- | --- | --- |
+| [etcd](https://github.com/etcd-io/etcd) | tool | candidate | Study a production-oriented distributed key-value control plane. |
+| [FoundationDB](https://github.com/apple/foundationdb) | tool | candidate | Examine transactional storage and fault-injection testing. |
+| [Jepsen](https://jepsen.io/) | benchmark | candidate | Investigate observable consistency under failures. |
+| [NATS](https://github.com/nats-io/nats-server) | tool | candidate | Compare messaging semantics and operational recovery. |
 
 ## Contribute
 

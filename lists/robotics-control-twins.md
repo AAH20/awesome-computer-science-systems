@@ -12,16 +12,16 @@
 - Sim-to-real gap
 - Fleet contention
 
-## Candidate references
+## References
 
-These are starting references, pending human editorial review. Inclusion is not an endorsement or benchmark result.
+The initial entries are candidates pending human editorial review. Status distinguishes scope review from reproduced measurement; inclusion alone is not an endorsement.
 
-| Reference | Kind | Why it belongs in this scope |
-| --- | --- | --- |
-| [ROS 2](https://github.com/ros2/ros2) | tool | Provides common robotic software interfaces. |
-| [MuJoCo](https://mujoco.org/) | tool | Enables controlled physics simulation experiments. |
-| [BEHAVIOR-1K](https://behavior.stanford.edu/) | benchmark | Provides embodied tasks tied to human activity needs. |
-| [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) | benchmark | Measures lifelong robot manipulation performance. |
+| Reference | Kind | Status | Why it belongs in this scope |
+| --- | --- | --- | --- |
+| [ROS 2](https://github.com/ros2/ros2) | tool | candidate | Provides common robotic software interfaces. |
+| [MuJoCo](https://mujoco.org/) | tool | candidate | Enables controlled physics simulation experiments. |
+| [BEHAVIOR-1K](https://behavior.stanford.edu/) | benchmark | candidate | Provides embodied tasks tied to human activity needs. |
+| [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) | benchmark | candidate | Measures lifelong robot manipulation performance. |
 
 ## Contribute
 

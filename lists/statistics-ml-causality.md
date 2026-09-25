@@ -12,16 +12,16 @@
 - Causal identification
 - Cost per accepted decision
 
-## Candidate references
+## References
 
-These are starting references, pending human editorial review. Inclusion is not an endorsement or benchmark result.
+The initial entries are candidates pending human editorial review. Status distinguishes scope review from reproduced measurement; inclusion alone is not an endorsement.
 
-| Reference | Kind | Why it belongs in this scope |
-| --- | --- | --- |
-| [scikit-learn](https://scikit-learn.org/stable/) | tool | Supplies transparent classical-ML baselines and evaluation utilities. |
-| [PyTorch](https://pytorch.org/) | tool | Supports reproducible deep-learning research and deployment. |
-| [DoWhy](https://www.pywhy.org/dowhy/) | tool | Makes causal assumptions, estimation and refutation explicit. |
-| [MLflow](https://mlflow.org/docs/latest/) | tool | Tracks model experiments and artifacts for reproducible comparison. |
+| Reference | Kind | Status | Why it belongs in this scope |
+| --- | --- | --- | --- |
+| [scikit-learn](https://scikit-learn.org/stable/) | tool | candidate | Supplies transparent classical-ML baselines and evaluation utilities. |
+| [PyTorch](https://pytorch.org/) | tool | candidate | Supports reproducible deep-learning research and deployment. |
+| [DoWhy](https://www.pywhy.org/dowhy/) | tool | candidate | Makes causal assumptions, estimation and refutation explicit. |
+| [MLflow](https://mlflow.org/docs/latest/) | tool | candidate | Tracks model experiments and artifacts for reproducible comparison. |
 
 ## Contribute
 

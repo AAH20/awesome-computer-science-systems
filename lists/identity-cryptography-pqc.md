@@ -12,16 +12,16 @@
 - Blast radius
 - Crypto migration interoperability
 
-## Candidate references
+## References
 
-These are starting references, pending human editorial review. Inclusion is not an endorsement or benchmark result.
+The initial entries are candidates pending human editorial review. Status distinguishes scope review from reproduced measurement; inclusion alone is not an endorsement.
 
-| Reference | Kind | Why it belongs in this scope |
-| --- | --- | --- |
-| [NIST Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | standard | Frames resource-centered access decisions without implicit location trust. |
-| [SPIFFE](https://spiffe.io/docs/latest/spiffe-specs/) | standard | Defines workload identity across heterogeneous systems. |
-| [OpenBao](https://github.com/openbao/openbao) | tool | Provides an inspectable secrets-management implementation. |
-| [NIST Post-Quantum Cryptography](https://www.nist.gov/pqc) | standard | Tracks finalized PQC algorithms and migration guidance. |
+| Reference | Kind | Status | Why it belongs in this scope |
+| --- | --- | --- | --- |
+| [NIST Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | standard | candidate | Frames resource-centered access decisions without implicit location trust. |
+| [SPIFFE](https://spiffe.io/docs/latest/spiffe-specs/) | standard | candidate | Defines workload identity across heterogeneous systems. |
+| [OpenBao](https://github.com/openbao/openbao) | tool | candidate | Provides an inspectable secrets-management implementation. |
+| [NIST Post-Quantum Cryptography](https://www.nist.gov/pqc) | standard | candidate | Tracks finalized PQC algorithms and migration guidance. |
 
 ## Contribute
 

@@ -4,6 +4,8 @@
 
 `candidate` means a useful primary reference proposed for review. `reviewed` means a named maintainer has checked URL, scope, capability, maintenance, license and a runnable starting point. `measured` requires a pinned workload, baseline, hardware, raw results, failure cases, uncertainty and an independent replay. `production_reference` additionally requires a consenting operator and permission to cite its deployment. The initial catalog contains only candidates; none has earned the latter states.
 
+The catalog stores this state per reference. Promotion requires the metadata listed in [CONTRIBUTING.md](../CONTRIBUTING.md); a public benchmark record is required for `measured`, and explicit citation permission for `production_reference`. A machine check establishes field completeness, while human review establishes credibility.
+
 ## Benchmark contract
 
 Each future benchmark record must include `protocol`, `upstream_version`, `dataset_hash`, `split`, `baseline`, `candidate`, `hardware`, `metric_formula`, `denominator`, `confidence_interval`, `excluded_cases`, `total_cost`, `failure_modes`, `source_rights`, and `reviewer`. Hard failures (unauthorized access, scope leaks, unsafe physical action, unsupported claim) are reported separately and cannot be averaged away. Compare identical tasks and budgets; never compare percentages across incompatible leaderboards.

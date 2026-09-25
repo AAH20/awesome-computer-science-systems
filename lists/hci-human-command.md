@@ -12,16 +12,16 @@
 - Nasa-tlx workload
 - Accessibility
 
-## Candidate references
+## References
 
-These are starting references, pending human editorial review. Inclusion is not an endorsement or benchmark result.
+The initial entries are candidates pending human editorial review. Status distinguishes scope review from reproduced measurement; inclusion alone is not an endorsement.
 
-| Reference | Kind | Why it belongs in this scope |
-| --- | --- | --- |
-| [NASA Task Load Index](https://humansystems.arc.nasa.gov/groups/tlx/downloads/TLX.pdf) | measurement | Provides a structured subjective workload instrument. |
-| [W3C WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) | standard | Defines testable web accessibility guidance. |
-| [D3](https://d3js.org/) | tool | Supports inspectable interactive data graphics. |
-| [Cytoscape.js](https://js.cytoscape.org/) | tool | Provides graph visualization and interaction primitives. |
+| Reference | Kind | Status | Why it belongs in this scope |
+| --- | --- | --- | --- |
+| [NASA Task Load Index](https://humansystems.arc.nasa.gov/groups/tlx/downloads/TLX.pdf) | measurement | candidate | Provides a structured subjective workload instrument. |
+| [W3C WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) | standard | candidate | Defines testable web accessibility guidance. |
+| [D3](https://d3js.org/) | tool | candidate | Supports inspectable interactive data graphics. |
+| [Cytoscape.js](https://js.cytoscape.org/) | tool | candidate | Provides graph visualization and interaction primitives. |
 
 ## Contribute
 

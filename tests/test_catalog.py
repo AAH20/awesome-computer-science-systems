@@ -34,6 +34,22 @@ class CatalogTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "HTTPS"):
             validate(insecure)
 
+    def test_review_status_requires_human_evidence(self):
+        altered = copy.deepcopy(self.data)
+        altered["domains"][0]["references"][0]["status"] = "reviewed"
+        with self.assertRaisesRegex(ValueError, "lacks evidence fields"):
+            validate(altered)
+
+    def test_measured_status_requires_benchmark_record(self):
+        altered = copy.deepcopy(self.data)
+        ref = altered["domains"][0]["references"][0]
+        ref.update(status="measured", reviewer="Test reviewer", reviewed_on="2026-09-25",
+                   suitable_workload="Synthetic invariant checking", limitations="Bounded model only",
+                   maintenance_evidence="Current project release", license_or_terms="See source",
+                   starting_point="Pinned example")
+        with self.assertRaisesRegex(ValueError, "lacks benchmark record"):
+            validate(altered)
+
 
 if __name__ == "__main__":
     unittest.main()

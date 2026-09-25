@@ -11,16 +11,16 @@
 - Solver runtime
 - Specification-to-implementation fidelity
 
-## Candidate references
+## References
 
-These are starting references, pending human editorial review. Inclusion is not an endorsement or benchmark result.
+The initial entries are candidates pending human editorial review. Status distinguishes scope review from reproduced measurement; inclusion alone is not an endorsement.
 
-| Reference | Kind | Why it belongs in this scope |
-| --- | --- | --- |
-| [TLA+](https://foundation.tlapl.us/) | method | Specify state machines and inspect concurrency invariants. |
-| [Alloy](https://alloytools.org/) | method | Explore relational models and bounded counterexamples. |
-| [Z3](https://github.com/Z3Prover/z3) | tool | Test satisfiability and constraints with a maintained SMT solver. |
-| [Lean](https://lean-lang.org/) | tool | Build machine-checked proofs with explicit assumptions. |
+| Reference | Kind | Status | Why it belongs in this scope |
+| --- | --- | --- | --- |
+| [TLA+](https://foundation.tlapl.us/) | method | candidate | Specify state machines and inspect concurrency invariants. |
+| [Alloy](https://alloytools.org/) | method | candidate | Explore relational models and bounded counterexamples. |
+| [Z3](https://github.com/Z3Prover/z3) | tool | candidate | Test satisfiability and constraints with a maintained SMT solver. |
+| [Lean](https://lean-lang.org/) | tool | candidate | Build machine-checked proofs with explicit assumptions. |
 
 ## Contribute
 

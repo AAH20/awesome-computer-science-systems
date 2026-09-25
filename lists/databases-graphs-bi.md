@@ -12,16 +12,16 @@
 - Lineage coverage
 - Cost per accepted analysis
 
-## Candidate references
+## References
 
-These are starting references, pending human editorial review. Inclusion is not an endorsement or benchmark result.
+The initial entries are candidates pending human editorial review. Status distinguishes scope review from reproduced measurement; inclusion alone is not an endorsement.
 
-| Reference | Kind | Why it belongs in this scope |
-| --- | --- | --- |
-| [Apache Iceberg](https://iceberg.apache.org/spec/) | standard | Defines versioned analytical table snapshots and evolution. |
-| [Apache Arrow Flight](https://arrow.apache.org/docs/format/Flight.html) | standard | Defines high-throughput transport for Arrow data services. |
-| [DuckDB](https://duckdb.org/docs/) | tool | Makes local analytical reproduction accessible. |
-| [Apache Superset](https://superset.apache.org/) | tool | Offers inspectable data exploration and BI interfaces. |
+| Reference | Kind | Status | Why it belongs in this scope |
+| --- | --- | --- | --- |
+| [Apache Iceberg](https://iceberg.apache.org/spec/) | standard | candidate | Defines versioned analytical table snapshots and evolution. |
+| [Apache Arrow Flight](https://arrow.apache.org/docs/format/Flight.html) | standard | candidate | Defines high-throughput transport for Arrow data services. |
+| [DuckDB](https://duckdb.org/docs/) | tool | candidate | Makes local analytical reproduction accessible. |
+| [Apache Superset](https://superset.apache.org/) | tool | candidate | Offers inspectable data exploration and BI interfaces. |
 
 ## Contribute
 
