@@ -1,0 +1,136 @@
+{
+  "schema_version": "cs-systems-atlas/v1",
+  "editorial_status": "candidate_references_pending_human_review",
+  "domains": [
+    {
+      "id": "algorithms-formal-methods",
+      "title": "Algorithms and Formal Methods",
+      "question": "Can a system prove or falsify its safety, consistency and complexity claims?",
+      "benchmark_dimensions": ["invariant coverage", "counterexample discovery", "solver runtime", "specification-to-implementation fidelity"],
+      "boundary": "A solver result is limited to its model, assumptions and bounded state space.",
+      "references": [
+        {"name": "TLA+", "url": "https://foundation.tlapl.us/", "kind": "method", "why": "Specify state machines and inspect concurrency invariants."},
+        {"name": "Alloy", "url": "https://alloytools.org/", "kind": "method", "why": "Explore relational models and bounded counterexamples."},
+        {"name": "Z3", "url": "https://github.com/Z3Prover/z3", "kind": "tool", "why": "Test satisfiability and constraints with a maintained SMT solver."},
+        {"name": "Lean", "url": "https://lean-lang.org/", "kind": "tool", "why": "Build machine-checked proofs with explicit assumptions."}
+      ]
+    },
+    {
+      "id": "distributed-systems",
+      "title": "Distributed Systems and Consensus",
+      "question": "What remains correct when nodes fail, partitions occur and clocks disagree?",
+      "benchmark_dimensions": ["linearizability", "recovery time", "availability under partitions", "p99 latency", "state divergence"],
+      "boundary": "A single-node throughput result says nothing about distributed correctness.",
+      "references": [
+        {"name": "etcd", "url": "https://github.com/etcd-io/etcd", "kind": "tool", "why": "Study a production-oriented distributed key-value control plane."},
+        {"name": "FoundationDB", "url": "https://github.com/apple/foundationdb", "kind": "tool", "why": "Examine transactional storage and fault-injection testing."},
+        {"name": "Jepsen", "url": "https://jepsen.io/", "kind": "benchmark", "why": "Investigate observable consistency under failures."},
+        {"name": "NATS", "url": "https://github.com/nats-io/nats-server", "kind": "tool", "why": "Compare messaging semantics and operational recovery."}
+      ]
+    },
+    {
+      "id": "internet-network-protocols",
+      "title": "Internet Routing and Network Protocols",
+      "question": "How do independent networks preserve reachability without trusting every announcement?",
+      "benchmark_dimensions": ["origin-validation coverage", "false route rejection", "convergence time", "incident detection delay", "affected prefixes"],
+      "boundary": "References are for read-only analysis and offline simulation, not live route control.",
+      "references": [
+        {"name": "BGP-4 RFC 4271", "url": "https://www.rfc-editor.org/info/rfc4271/", "kind": "standard", "why": "Defines inter-autonomous-system reachability exchange."},
+        {"name": "RPKI Origin Validation RFC 6811", "url": "https://www.rfc-editor.org/info/rfc6811/", "kind": "standard", "why": "Defines origin-validation behavior for BGP routes."},
+        {"name": "FRRouting", "url": "https://github.com/FRRouting/frr", "kind": "tool", "why": "Offers an inspectable routing implementation for controlled labs."},
+        {"name": "RIPE Atlas", "url": "https://atlas.ripe.net/", "kind": "measurement", "why": "Provides a public platform for Internet reachability measurement."}
+      ]
+    },
+    {
+      "id": "identity-cryptography-pqc",
+      "title": "Identity, Privileged Access and Post-Quantum Cryptography",
+      "question": "Who may act, how quickly can that authority be revoked, and can cryptography evolve safely?",
+      "benchmark_dimensions": ["false grants", "revocation lag", "policy-decision p99", "blast radius", "crypto migration interoperability"],
+      "boundary": "A policy engine does not replace authenticated identity or certified cryptographic modules.",
+      "references": [
+        {"name": "NIST Zero Trust Architecture", "url": "https://csrc.nist.gov/pubs/sp/800/207/final", "kind": "standard", "why": "Frames resource-centered access decisions without implicit location trust."},
+        {"name": "SPIFFE", "url": "https://spiffe.io/docs/latest/spiffe-specs/", "kind": "standard", "why": "Defines workload identity across heterogeneous systems."},
+        {"name": "OpenBao", "url": "https://github.com/openbao/openbao", "kind": "tool", "why": "Provides an inspectable secrets-management implementation."},
+        {"name": "NIST Post-Quantum Cryptography", "url": "https://www.nist.gov/pqc", "kind": "standard", "why": "Tracks finalized PQC algorithms and migration guidance."}
+      ]
+    },
+    {
+      "id": "databases-graphs-bi",
+      "title": "Databases, Knowledge Graphs and Business Intelligence",
+      "question": "Can decisions be reproduced from fresh, permissioned and traceable data?",
+      "benchmark_dimensions": ["snapshot reproducibility", "query p95", "schema compatibility", "lineage coverage", "cost per accepted analysis"],
+      "boundary": "Fast retrieval is not evidence that a source is correct or licensed.",
+      "references": [
+        {"name": "Apache Iceberg", "url": "https://iceberg.apache.org/spec/", "kind": "standard", "why": "Defines versioned analytical table snapshots and evolution."},
+        {"name": "Apache Arrow Flight", "url": "https://arrow.apache.org/docs/format/Flight.html", "kind": "standard", "why": "Defines high-throughput transport for Arrow data services."},
+        {"name": "DuckDB", "url": "https://duckdb.org/docs/", "kind": "tool", "why": "Makes local analytical reproduction accessible."},
+        {"name": "Apache Superset", "url": "https://superset.apache.org/", "kind": "tool", "why": "Offers inspectable data exploration and BI interfaces."}
+      ]
+    },
+    {
+      "id": "statistics-ml-causality",
+      "title": "Statistics, Machine Learning and Causal Science",
+      "question": "Does a model improve independently accepted decisions beyond a simpler baseline?",
+      "benchmark_dimensions": ["calibration", "generalization", "subgroup error", "causal identification", "cost per accepted decision"],
+      "boundary": "Prediction, intervention effects and generative plausibility are different claims.",
+      "references": [
+        {"name": "scikit-learn", "url": "https://scikit-learn.org/stable/", "kind": "tool", "why": "Supplies transparent classical-ML baselines and evaluation utilities."},
+        {"name": "PyTorch", "url": "https://pytorch.org/", "kind": "tool", "why": "Supports reproducible deep-learning research and deployment."},
+        {"name": "DoWhy", "url": "https://www.pywhy.org/dowhy/", "kind": "tool", "why": "Makes causal assumptions, estimation and refutation explicit."},
+        {"name": "MLflow", "url": "https://mlflow.org/docs/latest/", "kind": "tool", "why": "Tracks model experiments and artifacts for reproducible comparison."}
+      ]
+    },
+    {
+      "id": "agents-memory-graphrag",
+      "title": "Agent Protocols, Memory and GraphRAG",
+      "question": "Can independent agents exchange tasks and use bounded, source-linked memory correctly?",
+      "benchmark_dimensions": ["protocol conformance", "grounded task success", "retrieval recall", "cancellation correctness", "active-agent capacity"],
+      "boundary": "Logical agent registration is not active execution or upstream conformance.",
+      "references": [
+        {"name": "A2A Protocol", "url": "https://a2a-protocol.org/latest/specification/", "kind": "standard", "why": "Defines interoperable agent discovery and task exchange."},
+        {"name": "Model Context Protocol", "url": "https://modelcontextprotocol.io/specification", "kind": "standard", "why": "Defines interoperable tool and context interfaces."},
+        {"name": "LangGraph", "url": "https://github.com/langchain-ai/langgraph", "kind": "tool", "why": "Offers explicit graph-based workflow and state patterns."},
+        {"name": "LongMemEval-V2", "url": "https://github.com/xiaowu0162/LongMemEval-V2", "kind": "benchmark", "why": "Provides a long-history memory evaluation reference."}
+      ]
+    },
+    {
+      "id": "cloud-hpc-inference",
+      "title": "Cloud Infrastructure, HPC and AI Inference",
+      "question": "What is the reliable cost of serving accepted work at real active load?",
+      "benchmark_dimensions": ["throughput", "time to first token", "p99 latency", "energy per accepted task", "recovery time"],
+      "boundary": "Tokens per second alone do not capture task quality, GPU idle cost or human review.",
+      "references": [
+        {"name": "Kubernetes", "url": "https://kubernetes.io/docs/home/", "kind": "tool", "why": "Defines common container orchestration primitives."},
+        {"name": "Ray", "url": "https://docs.ray.io/en/latest/", "kind": "tool", "why": "Supports distributed execution across ML and agent workloads."},
+        {"name": "vLLM", "url": "https://docs.vllm.ai/", "kind": "tool", "why": "Offers a reference high-throughput model-serving engine."},
+        {"name": "MLPerf Inference", "url": "https://mlcommons.org/benchmarks/inference-datacenter/", "kind": "benchmark", "why": "Provides a governed datacenter inference measurement suite."}
+      ]
+    },
+    {
+      "id": "robotics-control-twins",
+      "title": "Robotics, Control and Digital Twins",
+      "question": "Does a simulated policy remain safe and effective under physical uncertainty?",
+      "benchmark_dimensions": ["task success", "safety-envelope violations", "interventions", "sim-to-real gap", "fleet contention"],
+      "boundary": "Simulator performance is not an airworthiness, industrial or classified-use approval.",
+      "references": [
+        {"name": "ROS 2", "url": "https://github.com/ros2/ros2", "kind": "tool", "why": "Provides common robotic software interfaces."},
+        {"name": "MuJoCo", "url": "https://mujoco.org/", "kind": "tool", "why": "Enables controlled physics simulation experiments."},
+        {"name": "BEHAVIOR-1K", "url": "https://behavior.stanford.edu/", "kind": "benchmark", "why": "Provides embodied tasks tied to human activity needs."},
+        {"name": "LIBERO", "url": "https://github.com/Lifelong-Robot-Learning/LIBERO", "kind": "benchmark", "why": "Measures lifelong robot manipulation performance."}
+      ]
+    },
+    {
+      "id": "hci-human-command",
+      "title": "Human-Computer Interaction and Human Command",
+      "question": "Can people understand, override and safely command increasingly complex automation?",
+      "benchmark_dimensions": ["critical miss rate", "override latency", "reviewer throughput", "NASA-TLX workload", "accessibility"],
+      "boundary": "More alerts and faster clicks do not establish better decisions.",
+      "references": [
+        {"name": "NASA Task Load Index", "url": "https://humansystems.arc.nasa.gov/groups/tlx/downloads/TLX.pdf", "kind": "measurement", "why": "Provides a structured subjective workload instrument."},
+        {"name": "W3C WCAG", "url": "https://www.w3.org/WAI/standards-guidelines/wcag/", "kind": "standard", "why": "Defines testable web accessibility guidance."},
+        {"name": "D3", "url": "https://d3js.org/", "kind": "tool", "why": "Supports inspectable interactive data graphics."},
+        {"name": "Cytoscape.js", "url": "https://js.cytoscape.org/", "kind": "tool", "why": "Provides graph visualization and interaction primitives."}
+      ]
+    }
+  ]
+}
